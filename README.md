@@ -40,19 +40,19 @@ Antes de instalar o AD, deixei o servidor com IP fixo e o DNS apontando pra ele 
 
 Depois de promover o servidor a controlador de domínio, conferi tudo pelo PowerShell com o `Get-ADDomain`: nome do domínio, floresta e nível funcional.
 
-![Get-ADDomain no PowerShell](screenshots/02-dominio-lab-local.png)
+![Get-ADDomain no PowerShell](02-dominio-lab-local.png)
 
 ### 3. OUs, usuários e grupos
 
 Criei uma OU raiz chamada **Ricarte LTDA** (o nome da empresa fictícia) e, dentro dela, uma OU para cada departamento: TI, RH e Financeiro. Em cada uma coloquei dois usuários e um grupo de segurança, `GRP_TI`, `GRP_RH` e `GRP_Financeiro`.
 
-![OU TI](screenshots/03-ou-ti.png)
-![OU RH](screenshots/04-ou-rh.png)
-![OU Financeiro](screenshots/05-ou-financeiro.png)
+![OU TI](03-ou-ti.png)
+![OU RH](04-ou-rh.png)
+![OU Financeiro](05-ou-financeiro.png)
 
 Também listei os membros dos grupos com o `Get-ADGroupMember`, pra conferir pelo PowerShell o que eu tinha feito na interface.
 
-![Membros dos grupos no PowerShell](screenshots/06-membros-dos-grupos.png)
+![Membros dos grupos no PowerShell](06-membros-dos-grupos.png)
 
 ### 4. GPOs
 
@@ -62,18 +62,18 @@ Criei três GPOs no Group Policy Management, cada uma ligada no lugar que faz se
 - **`GPO_Bloqueia_Painel_Controle`**: vinculada na OU **Financeiro**, bloqueando o acesso ao Painel de Controle.
 - **`GPO_MapeiaPastaRH`**: vinculada na OU **RH**, pra mapear a pasta compartilhada do departamento.
 
-![GPO_Papel_de_Parede](screenshots/07-gpo-papel-de-parede.png)
+![GPO_Papel_de_Parede](07-gpo-papel-de-parede.png)
 
 Na `GPO_MapeiaPastaRH` dá pra ver o escopo: ela está vinculada só na OU RH e o filtro de segurança está no padrão (*Authenticated Users*).
 
-![Escopo da GPO_MapeiaPastaRH](screenshots/08-gpo-mapeia-pasta-rh-escopo.png)
-![Detalhes da GPO_MapeiaPastaRH](screenshots/09-gpo-mapeia-pasta-rh-detalhes.png)
+![Escopo da GPO_MapeiaPastaRH](08-gpo-mapeia-pasta-rh-escopo.png)
+![Detalhes da GPO_MapeiaPastaRH](09-gpo-mapeia-pasta-rh-detalhes.png)
 
 ### 5. Pasta compartilhada do RH
 
 Criei a pasta `C:\Compartilhado\RH` e compartilhei com o nome `RH`. Na parte de permissões, em vez de dar acesso usuário por usuário, liberei só pro grupo `GRP_RH` (permissão de modificar), além de `SYSTEM` e `Administrators` com controle total. Quem entrar ou sair do RH é só mexer no grupo.
 
-![Compartilhamento e permissões da pasta RH](screenshots/10-pasta-rh-permissoes.png)
+![Compartilhamento e permissões da pasta RH](10-pasta-rh-permissoes.png)
 
 ## O que eu tirei disso
 
