@@ -34,7 +34,7 @@ Cada OU tem dois usuários fictícios e um grupo de segurança do departamento.
 
 Antes de instalar o AD, deixei o servidor com IP fixo e o DNS apontando pra ele mesmo, que é o jeito certo de configurar o primeiro controlador de domínio. O `ipconfig /all` mostra as duas placas: a de NAT (`10.0.2.15`) e a do lab (`192.168.10.10`).
 
-![ipconfig no SRV-DC01](screenshots/01-rede-srv-dc01.png)
+![ipconfig no SRV-DC01](01-rede-srv-dc01.png)
 
 ### 2. Domínio lab.local
 
